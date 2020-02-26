@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.lblTempo = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -52,6 +53,7 @@
             this.nudDivisao = new System.Windows.Forms.NumericUpDown();
             this.lblDivisao1 = new System.Windows.Forms.Label();
             this.btnIniciar = new System.Windows.Forms.Button();
+            this.tmrTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.nudSoma)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudSubtracao)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMultiplicacao)).BeginInit();
@@ -62,16 +64,16 @@
             // 
             this.lblTempo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblTempo.Font = new System.Drawing.Font("Microsoft JhengHei UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTempo.Location = new System.Drawing.Point(218, 8);
+            this.lblTempo.Location = new System.Drawing.Point(246, 6);
             this.lblTempo.Name = "lblTempo";
-            this.lblTempo.Size = new System.Drawing.Size(200, 30);
+            this.lblTempo.Size = new System.Drawing.Size(183, 30);
             this.lblTempo.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(63, 11);
+            this.label1.Location = new System.Drawing.Point(91, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(149, 24);
             this.label1.TabIndex = 1;
@@ -160,6 +162,11 @@
             // 
             this.nudSubtracao.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nudSubtracao.Location = new System.Drawing.Point(334, 132);
+            this.nudSubtracao.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
             this.nudSubtracao.Name = "nudSubtracao";
             this.nudSubtracao.Size = new System.Drawing.Size(108, 35);
             this.nudSubtracao.TabIndex = 11;
@@ -284,6 +291,11 @@
             this.btnIniciar.UseVisualStyleBackColor = true;
             this.btnIniciar.Click += new System.EventHandler(this.btnIniciar_Click);
             // 
+            // tmrTimer
+            // 
+            this.tmrTimer.Interval = 1000;
+            this.tmrTimer.Tick += new System.EventHandler(this.tmrTimer_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -351,6 +363,7 @@
         private System.Windows.Forms.NumericUpDown nudDivisao;
         private System.Windows.Forms.Label lblDivisao1;
         private System.Windows.Forms.Button btnIniciar;
+        private System.Windows.Forms.Timer tmrTimer;
     }
 }
 
