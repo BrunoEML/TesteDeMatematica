@@ -76,7 +76,6 @@
             this.label1.Size = new System.Drawing.Size(149, 24);
             this.label1.TabIndex = 1;
             this.label1.Text = "Tempo Restante";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // lblSoma1
             // 
@@ -283,6 +282,7 @@
             this.btnIniciar.TabIndex = 1;
             this.btnIniciar.Text = "Iniciar o Teste !!!";
             this.btnIniciar.UseVisualStyleBackColor = true;
+            this.btnIniciar.Click += new System.EventHandler(this.btnIniciar_Click);
             // 
             // Form1
             // 
