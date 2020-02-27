@@ -52,6 +52,21 @@ namespace TesteDeMatematica
             }
         }
 
+        private void Responder_enter(object sender, EventArgs e)
+        {
+            // Seleciona toda a resposta que está na caixa NumericUpDown
+            NumericUpDown answerBox = sender as NumericUpDown;
+
+            //Caso tenha algo na nud, obtemos o tamanho dete valor e o "selecionamos"
+            //Isto é útil para facilitar a inserção da resposta, selecionando um valor preexistente para que
+            //seja inteiramente substituida pelo valor digitado e não apenas inserida junto a ele
+            if (answerBox != null)
+            {
+                int tamanhoResposta = answerBox.Value.ToString().Length;
+                answerBox.Select(0, tamanhoResposta);
+            }
+        }
+
         public Form1()
         {
             InitializeComponent();
