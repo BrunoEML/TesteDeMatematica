@@ -163,11 +163,6 @@
             // 
             this.nudSubtracao.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nudSubtracao.Location = new System.Drawing.Point(334, 132);
-            this.nudSubtracao.Minimum = new decimal(new int[] {
-            100,
-            0,
-            0,
-            -2147483648});
             this.nudSubtracao.Name = "nudSubtracao";
             this.nudSubtracao.Size = new System.Drawing.Size(108, 35);
             this.nudSubtracao.TabIndex = 11;

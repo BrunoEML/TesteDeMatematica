@@ -83,10 +83,24 @@ namespace TesteDeMatematica
             //Atribuindo valores aleatórios para as variáveis
             valorSom1 = random.Next(50);
             valorSom2 = random.Next(50);
+            valorSub1 = random.Next(100);
+            valorSub2 = random.Next(0, valorSub1); //Coloca Sub1 como máximo possível, evitando respostas negativas
+            valorMul1 = random.Next(10);
+            valorMul2 = random.Next(10); 
+            valorDiv2 = random.Next(1, 10); //Impede a divisão por zero
+            int DivTemp = random.Next(10);
+            valorDiv1 = DivTemp * valorDiv2; //Garante que resultado da divisao sera um inteiro
+
 
             //Convertendo os valores para strings e mostrandos eles nos Labels
             lblSoma1.Text = valorSom1.ToString();
             lblSoma2.Text = valorSom2.ToString();
+            lblSubtracao1.Text = valorSub1.ToString();
+            lblSubtracao2.Text = valorSub2.ToString();
+            lblMultiplicacao1.Text = valorMul1.ToString();
+            lblMultiplicacao2.Text = valorMul2.ToString();
+            lblDivisao1.Text = valorDiv1.ToString();
+            lblDivisao2.Text = valorDiv2.ToString();
 
             //Inicializa o timer e define o tempo de conatgem em 30 (segundos)
             tempoRestante = 30;
@@ -103,7 +117,10 @@ namespace TesteDeMatematica
 
         private bool ConferirResposta()
         {
-            if ((valorSom1 + valorSom2 == nudSoma.Value))
+            if ((valorSom1 + valorSom2 == nudSoma.Value) &&
+                (valorSub1 - valorSub2 == nudSubtracao.Value) &&
+                (valorMul1 * valorMul2 == nudMultiplicacao.Value) &&
+                (valorDiv1 / valorDiv2 == nudDivisao.Value))
                 return true;
             else
                 return false;
