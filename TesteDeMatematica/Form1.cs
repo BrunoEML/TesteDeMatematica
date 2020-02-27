@@ -25,7 +25,16 @@ namespace TesteDeMatematica
         //Esta função será executada a cada 1000 milisegundos (1  segundo)
         private void tmrTimer_Tick(object sender, EventArgs e)
         {
-            if(tempoRestante > 0)   //Atualiza a contagem na tela a cada segundo
+            if(ConferirResposta())
+            {
+                //Caso todas as respostas estejam corretas encerra o jogo
+                lblTempo.ForeColor = Color.Green;
+                tmrTimer.Stop();
+                lblTempo.Text = "Parabéns!!! :)";
+                MessageBox.Show("Você conseguiu terminar a tempo.", "Parabéns Einstein!!!"); //Exibe as mensagens em uma caixa de diálogo
+                btnIniciar.Enabled = true;
+            }
+            else if (tempoRestante > 0)   //Atualiza a contagem na tela a cada segundo
             {
                 if (tempoRestante == 6) lblTempo.ForeColor = Color.Red;
 
@@ -34,11 +43,11 @@ namespace TesteDeMatematica
             }
             else
             {
-              //  nudSoma.BackColor = Color.Red;
-              //  nudSoma.Value = valorSom1 + valorSom2; Marcar de cores diferente os certos e errados
+                //  nudSoma.BackColor = Color.Red;
+                //  nudSoma.Value = valorSom1 + valorSom2; Marcar de cores diferente os certos e errados
                 tmrTimer.Stop();
-                lblTempo.Text = "Tempo Acabado :(";
-                MessageBox.Show("Você não conseguiu terminar a tempo.", "Mais sorte na próxima!!!"); //Exibe as mensagens em uma caixa de diálogo
+                lblTempo.Text = "Tempo Acabado";
+                MessageBox.Show("Você não conseguiu terminar a tempo.", "Mais sorte na próxima vez  :("); //Exibe as mensagens em uma caixa de diálogo
                 btnIniciar.Enabled = true;
             }
         }
@@ -69,13 +78,20 @@ namespace TesteDeMatematica
             lblTempo.Text = "30 segundos";
             tmrTimer.Start();
         }
-
         private void btnIniciar_Click(object sender, EventArgs e)
         {
             //Garante que o quiz não será iniciado novamente durante o jogo
             btnIniciar.Enabled = false;
 
             ComecarQuiz(); //Começa o quiz
+        }
+
+        private bool ConferirResposta()
+        {
+            if ((valorSom1 + valorSom2 == nudSoma.Value))
+                return true;
+            else
+                return false;
         }
     }
 }
