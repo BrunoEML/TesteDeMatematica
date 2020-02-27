@@ -97,6 +97,7 @@
             this.nudSoma.Size = new System.Drawing.Size(108, 35);
             this.nudSoma.TabIndex = 5;
             this.nudSoma.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.nudSoma.ValueChanged += new System.EventHandler(this.ValorCorretoSoma);
             this.nudSoma.Enter += new System.EventHandler(this.Responder_enter);
             // 
             // lblSoma2
@@ -167,6 +168,7 @@
             this.nudSubtracao.Size = new System.Drawing.Size(108, 35);
             this.nudSubtracao.TabIndex = 11;
             this.nudSubtracao.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.nudSubtracao.ValueChanged += new System.EventHandler(this.ValorCorretoSub);
             this.nudSubtracao.Enter += new System.EventHandler(this.Responder_enter);
             // 
             // lblSubtracao1
@@ -217,6 +219,7 @@
             this.nudMultiplicacao.Size = new System.Drawing.Size(108, 35);
             this.nudMultiplicacao.TabIndex = 16;
             this.nudMultiplicacao.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.nudMultiplicacao.ValueChanged += new System.EventHandler(this.ValorCorretoMult);
             this.nudMultiplicacao.Enter += new System.EventHandler(this.Responder_enter);
             // 
             // lblMultiplicacao1
@@ -267,6 +270,7 @@
             this.nudDivisao.Size = new System.Drawing.Size(108, 35);
             this.nudDivisao.TabIndex = 21;
             this.nudDivisao.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.nudDivisao.ValueChanged += new System.EventHandler(this.ValorCorretoDiv);
             this.nudDivisao.Enter += new System.EventHandler(this.Responder_enter);
             // 
             // lblDivisao1
@@ -328,6 +332,7 @@
             this.MinimizeBox = false;
             this.Name = "Form1";
             this.Text = "Teste de Matemática";
+            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Responder_enter);
             ((System.ComponentModel.ISupportInitialize)(this.nudSoma)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudSubtracao)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMultiplicacao)).EndInit();

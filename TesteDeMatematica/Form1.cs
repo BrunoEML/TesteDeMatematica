@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TesteDeMatematica
@@ -25,7 +19,7 @@ namespace TesteDeMatematica
         //Esta função será executada a cada 1000 milisegundos (1  segundo)
         private void tmrTimer_Tick(object sender, EventArgs e)
         {
-            if(ConferirResposta())
+            if (ConferirResposta())
             {
                 //Caso todas as respostas estejam corretas encerra o jogo
                 lblTempo.ForeColor = Color.Green;
@@ -43,12 +37,23 @@ namespace TesteDeMatematica
             }
             else
             {
-                //  nudSoma.BackColor = Color.Red;
-                //  nudSoma.Value = valorSom1 + valorSom2; Marcar de cores diferente os certos e errados
                 tmrTimer.Stop();
+                btnIniciar.Enabled = true;
+
+                //Mostra os resultados corretos, com os que o usuario errou em vermelho
+                nudSoma.ForeColor = (nudSoma.Value == valorSom1 + valorSom2) ? Color.Green : Color.Red;
+                nudSubtracao.ForeColor = (nudSubtracao.Value == valorSub1 - valorSub2) ? Color.Green : Color.Red;
+                nudMultiplicacao.ForeColor = (nudMultiplicacao.Value == valorMul1 * valorMul2) ? Color.Green : Color.Red;
+                nudDivisao.ForeColor = (nudDivisao.Value == valorDiv1 / valorDiv2) ? Color.Green : Color.Red;
+
+                nudSoma.Value = valorSom1 + valorSom2;
+                nudSubtracao.Value = valorSub1 - valorSub2;
+                nudMultiplicacao.Value = valorMul1 * valorMul2;
+                nudDivisao.Value = valorDiv1 / valorDiv2;
+
+
                 lblTempo.Text = "Tempo Acabado";
                 MessageBox.Show("Você não conseguiu terminar a tempo.", "Mais sorte na próxima vez  :("); //Exibe as mensagens em uma caixa de diálogo
-                btnIniciar.Enabled = true;
             }
         }
 
@@ -67,6 +72,31 @@ namespace TesteDeMatematica
             }
         }
 
+        //Eventos que emitirão um sinal sonoro caso o valor certo seja inserido
+        private void ValorCorretoSoma(object sender, EventArgs e)
+        {
+            if (btnIniciar.Enabled.Equals(false))  //Caso a partida esteja ocorrendo
+                nudSoma.ForeColor = (nudSoma.Value == valorSom1 + valorSom2) ? Color.Green : Color.Black;
+        }
+
+        private void ValorCorretoSub(object sender, EventArgs e)
+        {
+            if (btnIniciar.Enabled.Equals(false))
+                nudSubtracao.ForeColor = (nudSubtracao.Value == valorSub1 - valorSub2) ? Color.Green : Color.Black;
+        }
+
+        private void ValorCorretoMult(object sender, EventArgs e)
+        {
+            if (btnIniciar.Enabled.Equals(false))
+                nudMultiplicacao.ForeColor = (nudMultiplicacao.Value == valorMul1 * valorMul2) ? Color.Green : Color.Black;
+        }
+
+        private void ValorCorretoDiv(object sender, EventArgs e)
+        {
+            if (btnIniciar.Enabled.Equals(false))
+                nudDivisao.ForeColor = (nudDivisao.Value == valorDiv1 / valorDiv2) ? Color.Green : Color.Black;
+        }
+
         public Form1()
         {
             InitializeComponent();
@@ -76,19 +106,23 @@ namespace TesteDeMatematica
         {
             //Garante que os valores dos resultado serão iniciados em zero
             nudSoma.Value = 0;
+            nudSoma.ForeColor = Color.Black;
             nudSubtracao.Value = 0;
+            nudSubtracao.ForeColor = Color.Black;
             nudMultiplicacao.Value = 0;
+            nudMultiplicacao.ForeColor = Color.Black;
             nudDivisao.Value = 0;
+            nudDivisao.ForeColor = Color.Black;
 
             //Atribuindo valores aleatórios para as variáveis
             valorSom1 = random.Next(50);
             valorSom2 = random.Next(50);
             valorSub1 = random.Next(100);
             valorSub2 = random.Next(0, valorSub1); //Coloca Sub1 como máximo possível, evitando respostas negativas
-            valorMul1 = random.Next(10);
-            valorMul2 = random.Next(10); 
+            valorMul1 = random.Next(1, 10);
+            valorMul2 = random.Next(1, 10);
             valorDiv2 = random.Next(1, 10); //Impede a divisão por zero
-            int DivTemp = random.Next(10);
+            int DivTemp = random.Next(1, 10);
             valorDiv1 = DivTemp * valorDiv2; //Garante que resultado da divisao sera um inteiro
 
 
