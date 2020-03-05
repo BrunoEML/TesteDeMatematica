@@ -332,6 +332,7 @@
             this.MinimizeBox = false;
             this.Name = "Form1";
             this.Text = "Teste de Matemática";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Responder_enter);
             ((System.ComponentModel.ISupportInitialize)(this.nudSoma)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudSubtracao)).EndInit();

@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
+
 namespace TesteDeMatematica
 {
     public partial class Form1 : Form
@@ -27,6 +28,8 @@ namespace TesteDeMatematica
                 lblTempo.Text = "Parabéns!!! :)";
                 MessageBox.Show("Você conseguiu terminar a tempo.", "Parabéns Einstein!!!"); //Exibe as mensagens em uma caixa de diálogo
                 btnIniciar.Enabled = true;
+                Form2 form2 = new Form2(30 - tempoRestante);
+                form2.Show();
             }
             else if (tempoRestante > 0)   //Atualiza a contagem na tela a cada segundo
             {
@@ -95,6 +98,11 @@ namespace TesteDeMatematica
         {
             if (btnIniciar.Enabled.Equals(false))
                 nudDivisao.ForeColor = (nudDivisao.Value == valorDiv1 / valorDiv2) ? Color.Green : Color.Black;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
 
         public Form1()
